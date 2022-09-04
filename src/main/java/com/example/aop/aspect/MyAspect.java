@@ -17,10 +17,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspect {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MyAspect.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MyAspect.class);
 
-
-	@Around("@annotation(com.example.aop.annotation.LogMethodExecution)")
+    @Around("@annotation(com.example.aop.annotation.LogMethodExecution)")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
 
         System.out.println();
@@ -46,12 +45,12 @@ public class MyAspect {
             throwing = "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
 
-		Signature signature = joinPoint.getSignature();
-		String method = signature.getName();
+        Signature signature = joinPoint.getSignature();
+        String method = signature.getName();
 
-		LOGGER.error("An exception occurred while running {}",
-				method,
-				error);
+        LOGGER.error("An exception occurred while running {}",
+                method,
+                error);
 
     }
 
